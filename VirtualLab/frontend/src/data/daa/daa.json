@@ -1,0 +1,98 @@
+[
+  {
+    "id": "quicksort",
+    "title": "Divide & Conquer: Quick Sort Algorithm",
+    "subject": "DAA",
+    "subjectFull": "Design and Analysis of Algorithms",
+    "aim": "To implement and analyze the time complexity of Quick Sort algorithm using the Divide and Conquer strategy.",
+    "theory": "Quick Sort is an efficient sorting algorithm based on the Divide and Conquer approach. It selects an element as a 'pivot' and partitions the array into two sub-arrays according to whether elements are less than or greater than the pivot. The sub-arrays are then sorted recursively.\n\nKey Concepts:\n1. Pivot Selection: Strategies include picking the first element, last element, median, or a random element.\n2. Partitioning: Rearranging the array such that all elements less than the pivot are on the left and greater on the right.\n3. Recursion: Applying Quick Sort to the left and right sub-arrays.\n\nTime Complexity:\n- Best Case: O(n log n) - occurs when pivot divides array into roughly equal halves.\n- Average Case: O(n log n)\n- Worst Case: O(n^2) - occurs when the array is already sorted or reverse sorted.\n\nSpace Complexity: O(log n) auxiliary space due to recursion stack.",
+    "procedure": [
+      "Select a pivot element from the array (commonly the last element).",
+      "Initialize two pointers: i (boundary of elements smaller than pivot) and j (current scanner).",
+      "Scan through elements from index low to high - 1 using pointer j.",
+      "If element at j is smaller than or equal to pivot, increment i and swap element at i with element at j.",
+      "Place pivot element in its correct position by swapping element at i + 1 with pivot.",
+      "Return the pivot position (partition index).",
+      "Recursively apply Quick Sort to the left subarray (low to pIndex - 1) and right subarray (pIndex + 1 to high)."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the worst-case time complexity of Quick Sort?",
+          "options": ["O(n log n)", "O(n^2)", "O(n)", "O(1)"],
+          "answer": "O(n^2)"
+        },
+        {
+          "id": 2,
+          "question": "Which algorithmic paradigm does Quick Sort follow?",
+          "options": ["Greedy", "Dynamic Programming", "Divide and Conquer", "Backtracking"],
+          "answer": "Divide and Conquer"
+        }
+      ],
+      "defaultCode": "def quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quick_sort(left) + middle + quick_sort(right)\n\n# Test array\nnumbers = [38, 27, 43, 3, 9, 82, 10]\nprint('Sorted:', quick_sort(numbers))"
+    },
+    "result": "The Quick Sort algorithm was successfully implemented. Array elements were sorted in ascending order. Empirical time analysis verified O(n log n) average performance on random inputs.",
+    "conclusion": "Quick Sort is a highly practical in-place sorting algorithm with low overhead. Choosing a randomized pivot effectively avoids the worst-case O(n^2) runtime."
+  },
+  {
+    "id": "knapsack",
+    "title": "Dynamic Programming: 0/1 Knapsack Problem",
+    "subject": "DAA",
+    "subjectFull": "Design and Analysis of Algorithms",
+    "aim": "To formulate and solve the 0/1 Knapsack Problem using Dynamic Programming technique and evaluate space-time tradeoffs.",
+    "theory": "The 0/1 Knapsack Problem is a combinatorial optimization problem. Given a set of items, each with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible.\n\nIn 0/1 Knapsack, items cannot be broken into smaller pieces (either take an item completely or leave it).\n\nDynamic Programming Approach:\nWe build a 2D table DP[i][w] representing the maximum value attainable using a subset of first i items with a weight capacity w.\n\nRecurrence Relation:\nDP[i][w] = max(DP[i-1][w], value[i-1] + DP[i-1][w - weight[i-1]]) if weight[i-1] <= w\nelse DP[i-1][w]",
+    "procedure": [
+      "Define inputs: weights array, values array, capacity W, and number of items n.",
+      "Create a DP table of dimensions (n + 1) x (W + 1) initialized to 0.",
+      "Iterate i from 1 to n (items) and w from 1 to W (capacity).",
+      "For each item, if item weight is less than or equal to current capacity w, decide whether to include it or exclude it by picking the maximum value.",
+      "Otherwise, exclude the item: DP[i][w] = DP[i-1][w].",
+      "The value in DP[n][W] represents the maximum achievable profit.",
+      "Backtrack from DP[n][W] to trace which specific items were selected."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the time complexity of 0/1 Knapsack using Dynamic Programming?",
+          "options": ["O(n * W)", "O(2^n)", "O(n log n)", "O(W^2)"],
+          "answer": "O(n * W)"
+        }
+      ],
+      "defaultCode": "def knapsack(weights, values, W):\n    n = len(weights)\n    dp = [[0 for _ in range(W + 1)] for _ in range(n + 1)]\n    for i in range(1, n + 1):\n        for w in range(1, W + 1):\n            if weights[i-1] <= w:\n                dp[i][w] = max(dp[i-1][w], values[i-1] + dp[i-1][w - weights[i-1]])\n            else:\n                dp[i][w] = dp[i-1][w]\n    return dp[n][W]\n\nweights = [2, 3, 4, 5]\nvalues = [3, 4, 5, 6]\ncapacity = 5\nprint('Max Profit:', knapsack(weights, values, capacity))"
+    },
+    "result": "The 0/1 Knapsack solution yielded the optimal profit for given capacity constraints, overcoming exponential brute-force complexity by reusing optimal subproblems in O(n * W) time.",
+    "conclusion": "Dynamic programming eliminates redundant computation in 0/1 Knapsack by storing subproblem solutions, demonstrating the power of optimal substructure and overlapping subproblems."
+  },
+  {
+    "id": "dijkstra",
+    "title": "Greedy Method: Dijkstra's Shortest Path Algorithm",
+    "subject": "DAA",
+    "subjectFull": "Design and Analysis of Algorithms",
+    "aim": "To compute single-source shortest paths in a weighted directed/undirected graph with non-negative edge weights using Dijkstra's algorithm.",
+    "theory": "Dijkstra's Algorithm finds the shortest distance from a single source node to all other nodes in a graph with non-negative edge weights.\n\nGreedy Strategy:\nAt each step, it selects the unvisited node with the minimum distance metric, updates distances to its adjacent neighbors (relaxation step), and marks the selected node as processed.",
+    "procedure": [
+      "Initialize distance to source node as 0 and all other nodes as infinity.",
+      "Maintain a set of unvisited nodes.",
+      "Find unvisited node u with the smallest tentative distance.",
+      "For node u, iterate over all adjacent unvisited neighbors v.",
+      "Relax edge (u, v): if distance[u] + weight(u, v) < distance[v], update distance[v].",
+      "Mark node u as visited.",
+      "Repeat until all reachable nodes are visited."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "Dijkstra's algorithm cannot be guaranteed to work correctly with which type of edges?",
+          "options": ["Negative weight edges", "Zero weight edges", "Positive weight edges", "Multiple parallel edges"],
+          "answer": "Negative weight edges"
+        }
+      ],
+      "defaultCode": "import heapq\n\ndef dijkstra(graph, start):\n    distances = {node: float('inf') for node in graph}\n    distances[start] = 0\n    pq = [(0, start)]\n    while pq:\n        dist, u = heapq.heappop(pq)\n        if dist > distances[u]:\n            continue\n        for v, weight in graph[u]:\n            if distances[u] + weight < distances[v]:\n                distances[v] = distances[u] + weight\n                heapq.heappush(pq, (distances[v], v))\n    return distances\n\ngraph = {'A': [('B', 4), ('C', 2)], 'B': [('C', 1), ('D', 5)], 'C': [('D', 8), ('E', 10)], 'D': [('E', 2)], 'E': []}\nprint('Shortest distances:', dijkstra(graph, 'A'))"
+    },
+    "result": "Dijkstra's algorithm accurately generated shortest path trees from source node A to all graph destinations in O((V + E) log V) time using min-priority queues.",
+    "conclusion": "Dijkstra's algorithm is optimal for non-negative edge weights. For graphs with negative edge weights, Bellman-Ford must be used instead."
+  }
+]

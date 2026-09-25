@@ -1,0 +1,398 @@
+[
+  {
+    "id": "ml-tools",
+    "title": "Expt 1: Study of Various ML tools (NumPy and Pandas library in Python)",
+    "subject": "ML",
+    "subjectFull": "Machine Learning Lab (AIL501)",
+    "aim": "Study of Various ML tools (NumPy and Pandas library in Python).",
+    "theory": "Objectives:\n• To understand fundamental concepts and functionalities of NumPy and Pandas libraries used in machine learning and data analysis.\n• To learn how to efficiently handle, manipulate, and process numerical and structured data using Python-based tools.\n• To explore NumPy for high-performance mathematical operations and array-based computing.\n• To gain practical skills in using Pandas for data cleaning, transformation, and analysis.\n\nTools: Anaconda, Python 3.7, Jupyter Notebook\n\nWhat is NumPy?\nNumPy stands for 'Numerical Python'. It is a library consisting of multidimensional array objects and a collection of routines for processing array elements. Using NumPy, developers can perform mathematical and logical operations on arrays, Fourier transforms, linear algebra, and random number generation.\n\nWhy use NumPy?\nNumPy arrays are faster and more compact than Python lists. An array consumes less memory and provides a mechanism of specifying data types, allowing code optimization.\n\nWhat is Pandas?\nPandas is an open-source library built on top of NumPy that allows data manipulation and analysis in Python. It offers DataFrames and Series structures for numerical tables and time series analysis.\n\nWhy use Pandas?\n• Easily handles missing data.\n• Uses 1D Series and 2D/multi-dimensional DataFrames.\n• Provides efficient data slicing, merging, concatenation, and reshaping.\n• Includes powerful time series tools.",
+    "procedure": [
+      "Install and import NumPy and Pandas libraries (`import numpy as np`, `import pandas as pd`).",
+      "Create 1-D array A: `A = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])`.",
+      "Create 2-D array B: `B = np.array([[1,2,3], [4,5,6], [7,8,9]])` and print elements and data type.",
+      "Create 3-D array C: `C = np.array([[[1,2],[3,4]], [[5,6],[7,8]]])`.",
+      "Perform slicing: slice index 1 to 5 of A (`A[1:5]`), 3rd element to end (`A[3:]`).",
+      "Reshape array A into a 3x3 2-D array: `A1 = A.reshape(3, 3)`.",
+      "Flatten array C into 1-D: `C1 = C.reshape(-1)`.",
+      "Perform element-wise multiplication (`np.multiply(P, Q)`) and matrix multiplication (`np.dot(P, Q)`).",
+      "Load dataset into Pandas DataFrame: `df = pd.read_csv('nba.csv')`.",
+      "Inspect DataFrame using `df.head(10)`, `df.info()`, column filtering (`df['Team']`), conditional filtering (`df[df['Age'] > 25]`), and null check (`df.isnull().sum()`)."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the primary difference between a Python list and a NumPy array?",
+          "options": [
+            "NumPy arrays store homogeneous data in contiguous memory and perform vectorized operations faster",
+            "Python lists are faster for mathematical matrix operations",
+            "NumPy arrays can only store string elements",
+            "Python lists require less memory than NumPy arrays"
+          ],
+          "answer": "NumPy arrays store homogeneous data in contiguous memory and perform vectorized operations faster"
+        },
+        {
+          "id": 2,
+          "question": "Which Pandas function is used to inspect data types, memory usage, and non-null counts of a DataFrame?",
+          "options": ["df.info()", "df.head()", "df.describe()", "df.isnull()"],
+          "answer": "df.info()"
+        }
+      ],
+      "defaultCode": "import numpy as np\nimport pandas as pd\n\n# 1. Create 1D and 2D arrays\nA = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])\nB = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\n\nprint('1D Array A:', A)\nprint('Reshaped A (3x3):\\n', A.reshape(3, 3))\nprint('Element-wise square of B:\\n', np.square(B))\n\n# 2. Pandas DataFrame operations\ndata = {'Name': ['Alice', 'Bob', 'Charlie'], 'Age': [23, 29, 31], 'Team': ['Boston', 'Utah', 'Boston']}\ndf = pd.DataFrame(data)\nprint('\\nDataFrame Head:\\n', df.head())\nprint('\\nPlayers with Age > 25:\\n', df[df['Age'] > 25])"
+    },
+    "result": "Successfully demonstrated array manipulation, matrix operations using NumPy, and data loading, filtering, and inspection using Pandas DataFrames.",
+    "conclusion": "NumPy library is very useful for defining, performing mathematical operations and manipulating arrays. Pandas library efficiently handles data by fetching it into a dataframe."
+  },
+  {
+    "id": "linear-regression",
+    "title": "Expt 2: Demonstrate the working of Linear Regression algorithm",
+    "subject": "ML",
+    "subjectFull": "Machine Learning Lab (AIL501)",
+    "aim": "Write a program to demonstrate the working of the linear regression algorithm. Use an appropriate data set for linear regression.",
+    "theory": "Objective:\n• To understand and implement Linear Regression using Python.\n• To apply Linear Regression on a suitable dataset and analyze the relationship between independent (X) and dependent (Y) variables.\n• To visualize the regression line and evaluate performance using metrics such as Mean Squared Error (MSE), RMSE, or R² score.\n\nTheory:\nLinear regression is a supervised machine learning algorithm that models a straight mathematical relationship between continuous variables. It simulates a linear equation Y = β0 + β1*X to predict numeric outputs such as sales, salary, price, or agricultural yield.\n\nThe algorithm calculates the optimal slope (β1) and intercept (β0) of the 'best fit line' that minimizes the squared distance between actual data points and predicted values.",
+    "procedure": [
+      "Step 1: Import required libraries (numpy, matplotlib.pyplot, sklearn.linear_model.LinearRegression, sklearn.metrics).",
+      "Step 2: Generate or load dataset containing independent variable X and target variable Y.",
+      "Step 3: Initialize the Linear Regression model: `model = LinearRegression()`.",
+      "Step 4: Train/fit the model on data: `model.fit(X, Y)`.",
+      "Step 5: Predict output target values: `Y_pred = model.predict(X)`.",
+      "Step 6: Compute evaluation metrics: Root Mean Squared Error (RMSE) and R² score (`r2_score(Y, Y_pred)`).",
+      "Step 7: Plot scatter plot of sample data points and superimpose predicted linear regression line."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "In Linear Regression, what does the R² score evaluate?",
+          "options": [
+            "The proportion of variance in the dependent variable explained by independent features",
+            "The number of features in the dataset",
+            "The total execution time of the algorithm",
+            "The binary classification accuracy rate"
+          ],
+          "answer": "The proportion of variance in the dependent variable explained by independent features"
+        }
+      ],
+      "defaultCode": "import numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error, r2_score\n\n# Generate random sample data\nnp.random.seed(0)\nX = np.random.rand(100, 1)\nY = 2 + 3 * X + np.random.rand(100, 1)\n\n# Model training\nmodel = LinearRegression()\nmodel.fit(X, Y)\nY_pred = model.predict(X)\n\n# Metrics\nrmse = np.sqrt(mean_squared_error(Y, Y_pred))\nr2 = r2_score(Y, Y_pred)\nprint(f'Slope: {model.coef_[0][0]:.4f}')\nprint(f'Intercept: {model.intercept_[0]:.4f}')\nprint(f'RMSE: {rmse:.4f}, R2 Score: {r2:.4f}')"
+    },
+    "result": "The Linear Regression model fitted the training dataset. Model parameters (Slope and Intercept) were extracted, and performance was evaluated using RMSE and R² score.",
+    "conclusion": "Linear Regression effectively finds the best fit line for predicting continuous target variables from independent features, minimizing error metrics."
+  },
+  {
+    "id": "logistic-regression",
+    "title": "Expt 3: Demonstrate the working of Logistic Regression algorithm",
+    "subject": "ML",
+    "subjectFull": "Machine Learning Lab (AIL501)",
+    "aim": "Write a program to demonstrate the working of the logistic regression algorithm. Use an appropriate data set for non-linear regression and apply this knowledge to curve fitting on non-linearly separable data.",
+    "theory": "Objective:\n• To understand working of Logistic Regression and its application in binary classification.\n• To implement Logistic Regression on dataset and perform curve fitting to classify data.\n\nTheory:\nLogistic Regression is a supervised machine learning algorithm used for classification tasks where the goal is to predict the probability that an instance belongs to a specific class (Class 0 or Class 1).\n\nIt utilizes the Sigmoid Function: σ(z) = 1 / (1 + e^(-z)) to transform continuous values into probabilities bounded between 0 and 1. If σ(z) ≥ 0.5, the sample is classified as Class 1; otherwise Class 0.",
+    "procedure": [
+      "Step 1: Import numpy, pandas, matplotlib, and sklearn.linear_model.LogisticRegression.",
+      "Step 2: Load binary classification dataset (e.g. student exam scores vs university admission).",
+      "Step 3: Preprocess dataset and split into features (X) and binary labels (y).",
+      "Step 4: Initialize LogisticRegression classifier and train model: `model.fit(X_train, y_train)`.",
+      "Step 5: Compute predicted probabilities using `model.predict_proba(X)` and class predictions using `model.predict(X)`.",
+      "Step 6: Visualize decision boundary and Sigmoid curve.",
+      "Step 7: Evaluate classifier using Confusion Matrix, Accuracy Score, and ROC/AUC metrics."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the mathematical output range of the Sigmoid activation function used in Logistic Regression?",
+          "options": ["Between 0 and 1", "Between -1 and +1", "Between 0 and Infinity", "Unbounded real numbers"],
+          "answer": "Between 0 and 1"
+        }
+      ],
+      "defaultCode": "import numpy as np\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import accuracy_score, confusion_matrix\n\n# Sample Exam Marks: [Exam1, Exam2]\nX = np.array([[34, 70], [45, 85], [70, 75], [80, 90], [30, 40], [60, 65]])\ny = np.array([0, 1, 1, 1, 0, 1]) # Admitted (1) or Not Admitted (0)\n\n# Train Logistic Regression\nclf = LogisticRegression()\nclf.fit(X, y)\ny_pred = clf.predict(X)\n\nprint('Predictions:', y_pred)\nprint('Accuracy:', accuracy_score(y, y_pred))\nprint('Confusion Matrix:\\n', confusion_matrix(y, y_pred))"
+    },
+    "result": "Logistic Regression successfully mapped input feature spaces to binary probabilities using the Sigmoid decision boundary.",
+    "conclusion": "Logistic Regression provides an efficient, probabilistic approach for binary classification problems by fitting data through the Sigmoid activation function."
+  },
+  {
+    "id": "gradient-descent",
+    "title": "Expt 4: Optimization Using Gradient Descent: Linear Regression",
+    "subject": "ML",
+    "subjectFull": "Machine Learning Lab (AIL501)",
+    "aim": "To implement Univariate Linear Regression using NumPy and pandas and apply a gradient descent algorithm for optimization.",
+    "theory": "Objective:\n• To implement Univariate Linear Regression from scratch using NumPy and Pandas.\n• To understand and apply Gradient Descent optimization algorithm for minimizing the cost function.\n• Hands-on experience in data preprocessing, training, and evaluation without built-in ML libraries.\n\nTheory:\nCost Function (J):\nJ(θ0, θ1) = (1 / 2m) * Σ (h_θ(x^(i)) - y^(i))^2\n\nGradient Descent Algorithm:\nIteratively updates parameters θ0 and θ1 in the direction of steepest negative gradient:\nθ_j := θ_j - α * (∂J / ∂θ_j)\nwhere α is the learning rate.",
+    "procedure": [
+      "Step 1: Load univariate dataset (e.g. food truck profit vs city population).",
+      "Step 2: Initialize parameters θ0 = 0, θ1 = 0, learning rate α (e.g., 0.01), and iterations count.",
+      "Step 3: Define hypothesis function: `h_x = θ0 + θ1 * X`.",
+      "Step 4: Compute Cost Function J(θ) for current iteration.",
+      "Step 5: Compute partial derivatives for θ0 and θ1 and update parameters simultaneously.",
+      "Step 6: Repeat update loop for specified epochs and record cost history.",
+      "Step 7: Plot cost curve over iterations to verify convergence to global minimum."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the purpose of the learning rate (α) parameter in Gradient Descent?",
+          "options": [
+            "To control the size of step taken towards the minimum of the cost function",
+            "To define the total number of features in dataset",
+            "To split data into training and test sets",
+            "To convert continuous values into binary labels"
+          ],
+          "answer": "To control the size of step taken towards the minimum of the cost function"
+        }
+      ],
+      "defaultCode": "import numpy as np\n\n# Univariate data\nX = np.array([1, 2, 4, 3, 5])\ny = np.array([1, 3, 3, 2, 5])\nm = len(y)\n\n# Gradient Descent parameters\ntheta0, theta1 = 0.0, 0.0\nalpha = 0.01\nepochs = 1000\n\nfor epoch in range(epochs):\n    h = theta0 + theta1 * X\n    d_theta0 = (1 / m) * np.sum(h - y)\n    d_theta1 = (1 / m) * np.sum((h - y) * X)\n    theta0 -= alpha * d_theta0\n    theta1 -= alpha * d_theta1\n\nprint(f'Optimized parameters: theta0 = {theta0:.4f}, theta1 = {theta1:.4f}')"
+    },
+    "result": "Gradient Descent optimization algorithm converged parameters θ0 and θ1 to minimize Mean Squared Error cost across training iterations.",
+    "conclusion": "Gradient descent is an essential optimization technique that systematically minimizes error by moving parameters in the direction of negative gradient."
+  },
+  {
+    "id": "knn-classification",
+    "title": "Expt 5: Implement K-Nearest Neighbors using NumPy and pandas",
+    "subject": "ML",
+    "subjectFull": "Machine Learning Lab (AIL501)",
+    "aim": "To implement K-Nearest Neighbors using NumPy and pandas.",
+    "theory": "Objective:\n• To understand K-Nearest Neighbors (KNN) algorithm and its working principle.\n• To implement KNN from scratch using NumPy and Pandas without pre-built ML libraries.\n• To evaluate performance in terms of accuracy and prediction quality.\n\nTheory:\nKNN is a simple, instance-based non-parametric supervised learning algorithm. It assumes that similar items exist in close spatial proximity.\n\nAlgorithm Steps:\n1. Load dataset (e.g. Iris flower species dataset).\n2. Choose value K (number of nearest neighbors, typically odd).\n3. Calculate Euclidean distance: d(p, q) = sqrt(Σ (p_i - q_i)^2) from query point to all points.\n4. Sort distances in ascending order and pick top K instances.\n5. Take majority vote among K labels for classification or average for regression.",
+    "procedure": [
+      "Step 1: Load dataset containing feature vectors and class labels using Pandas.",
+      "Step 2: Define distance function (Euclidean distance between sample vectors).",
+      "Step 3: For each test sample, compute distance to every training sample.",
+      "Step 4: Sort distances in ascending order and select top K nearest neighbors.",
+      "Step 5: Get class labels of selected K neighbors.",
+      "Step 6: Return mode (most frequent label) as predicted class.",
+      "Step 7: Compute classification accuracy on test dataset."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "Why is an odd value of K generally preferred in KNN classification?",
+          "options": [
+            "To avoid ties during majority voting among classes",
+            "To reduce memory usage of feature matrices",
+            "To make the Euclidean distance negative",
+            "To speed up matrix multiplication"
+          ],
+          "answer": "To avoid ties during majority voting among classes"
+        }
+      ],
+      "defaultCode": "import numpy as np\nfrom collections import Counter\n\ndef euclidean_distance(x1, x2):\n    return np.sqrt(np.sum((x1 - x2) ** 2))\n\n# Training data [sepal_length, petal_length]\nX_train = np.array([[5.1, 1.4], [4.9, 1.4], [6.2, 4.8], [5.9, 5.1]])\ny_train = np.array(['setosa', 'setosa', 'versicolor', 'virginica'])\n\n# Test point\nx_test = np.array([5.0, 1.5])\nK = 3\n\ndistances = [euclidean_distance(x_test, x) for x in X_train]\nk_indices = np.argsort(distances)[:K]\nk_labels = [y_train[i] for i in k_indices]\npredicted_class = Counter(k_labels).most_common(1)[0][0]\n\nprint(f'Predicted Class for {x_test}: {predicted_class}')"
+    },
+    "result": "KNN algorithm computed Euclidean distances and correctly classified test samples based on majority voting among K nearest neighbors.",
+    "conclusion": "K-Nearest Neighbors is an intuitive lazy-learning algorithm that delivers accurate classification based on spatial feature proximity and neighbor consensus."
+  },
+  {
+    "id": "decision-tree",
+    "title": "Expt 6: Demonstrate the working of Decision Tree algorithm",
+    "subject": "ML",
+    "subjectFull": "Machine Learning Lab (AIL501)",
+    "aim": "Write a program to demonstrate the working of the decision tree algorithm. Use an appropriate data set for building the decision tree and apply this knowledge to classify a new sample.",
+    "theory": "Objective:\n• To understand working and structure of Decision Tree algorithm for classification.\n• To implement a Decision Tree model using appropriate dataset and visualize decision-making process.\n• Classify new samples based on learned tree patterns.\n\nTheory:\nA Decision Tree is a flowchart-like tree structure where internal nodes represent feature tests, branches represent decision rules, and leaf nodes represent target class outcomes.\n\nKey Concepts:\n1. Entropy: Measure of degree of randomness/impurity in dataset: H(S) = - Σ p_i * log2(p_i).\n2. Information Gain: Reduction in entropy resulting from splitting dataset on a specific attribute: IG(S, A) = H(S) - Σ (|S_v| / |S|) * H(S_v).",
+    "procedure": [
+      "Step 1: Import dataset (e.g., Titanic survival dataset or Employee salary dataset).",
+      "Step 2: Calculate target variable Entropy.",
+      "Step 3: Calculate Information Gain for all candidate features.",
+      "Step 4: Select feature with highest Information Gain as root node.",
+      "Step 5: Recursively split dataset to construct decision branches.",
+      "Step 6: Fit `DecisionTreeClassifier(criterion='entropy')` using Scikit-Learn.",
+      "Step 7: Visualize tree structure and evaluate test classification accuracy & confusion matrix."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "What does Information Gain measure in Decision Tree splitting?",
+          "options": [
+            "The reduction in entropy achieved by partitioning data on a feature",
+            "The total time taken to train the tree",
+            "The number of leaf nodes in the tree",
+            "The Euclidean distance between data points"
+          ],
+          "answer": "The reduction in entropy achieved by partitioning data on a feature"
+        }
+      ],
+      "defaultCode": "from sklearn.tree import DecisionTreeClassifier, export_text\nimport numpy as np\n\n# Features: [Age > 30 (1/0), Income High (1/0)]\nX = np.array([[1, 1], [1, 0], [0, 1], [0, 0], [1, 1]])\ny = np.array([1, 0, 1, 0, 1]) # Survived/Purchased\n\nclf = DecisionTreeClassifier(criterion='entropy')\nclf.fit(X, y)\n\ntree_rules = export_text(clf, feature_names=['Age_gt_30', 'Income_High'])\nprint('Decision Tree Rules:\\n', tree_rules)"
+    },
+    "result": "Decision Tree classifier constructed decision nodes based on Information Gain, successfully classifying unseen input samples.",
+    "conclusion": "Decision Trees split complex decision problems into intuitive rule-based branches, making decision logic easy to interpret and visualize."
+  },
+  {
+    "id": "svm-classification",
+    "title": "Expt 7: Implement Support Vector Machine (SVM) for classification",
+    "subject": "ML",
+    "subjectFull": "Machine Learning Lab (AIL501)",
+    "aim": "Write a program to implement the SVM for a sample data set for classification. Use a Suitable data set.",
+    "theory": "Objective:\n• To understand concept and working of Support Vector Machine (SVM) algorithm.\n• To implement SVM model using suitable dataset to classify data points into distinct categories.\n• To visualize decision boundary (hyperplane) and support vectors.\n\nTheory:\nSupport Vector Machine (SVM) is a supervised machine learning algorithm that finds an optimal hyperplane in n-dimensional space to segregate data points into classes with maximum margin.\n\nKey Concepts:\n1. Hyperplane: Decision boundary separating classes.\n2. Support Vectors: Data points closest to hyperplane that influence its orientation and margin.\n3. Margin: Distance between hyperplane and support vectors; SVM maximizes this margin.\n4. Kernels: Functions (Linear, RBF, Polynomial) mapping non-linearly separable data into higher dimensional space.",
+    "procedure": [
+      "Step 1: Load classification dataset (e.g. Social Network Ads dataset with Age and Salary).",
+      "Step 2: Preprocess features and perform Feature Scaling using `StandardScaler`.",
+      "Step 3: Split dataset into training set and testing set.",
+      "Step 4: Instantiate SVM classifier: `clf = SVC(kernel='linear'|'rbf', C=1.0)`.",
+      "Step 5: Train model on scaled training data (`clf.fit(X_train, y_train)`).",
+      "Step 6: Predict test set labels and evaluate accuracy, precision, and confusion matrix.",
+      "Step 7: Plot 2D decision boundary showing support vectors and decision regions."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "What are support vectors in SVM?",
+          "options": [
+            "Data points closest to the decision hyperplane that define the margin boundary",
+            "The total number of columns in dataset",
+            "Outlier data points that are ignored during training",
+            "The slope values of linear regression"
+          ],
+          "answer": "Data points closest to the decision hyperplane that define the margin boundary"
+        }
+      ],
+      "defaultCode": "from sklearn.svm import SVC\nfrom sklearn.preprocessing import StandardScaler\nimport numpy as np\n\n# Features: [Age, Salary in Thousands]\nX = np.array([[25, 30], [30, 45], [45, 80], [50, 95], [20, 20], [55, 110]])\ny = np.array([0, 0, 1, 1, 0, 1]) # Purchased Car (1/0)\n\nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(X)\n\nsvm = SVC(kernel='linear')\nsvm.fit(X_scaled, y)\nprint('Support Vectors:\\n', svm.support_vectors_)\nprint('Accuracy on Training Data:', svm.score(X_scaled, y))"
+    },
+    "result": "SVM model established optimal hyperplane maximizing margin distance between classes using support vectors.",
+    "conclusion": "Support Vector Machine is a powerful classification algorithm that maximizes class separation margins and handles non-linear boundaries using kernel transformations."
+  },
+  {
+    "id": "random-forest",
+    "title": "Expt 8: Implement Random-Forest algorithm using python",
+    "subject": "ML",
+    "subjectFull": "Machine Learning Lab (AIL501)",
+    "aim": "To implement random-forest using sci-kit learn library.",
+    "theory": "Objective:\n• To understand concept of Random Forest algorithm, an ensemble method based on decision trees.\n• To implement Random Forest classifier using Scikit-learn library on suitable dataset.\n• To analyze accuracy, robustness, and feature importance.\n\nTheory:\nRandom Forest is a Supervised Machine Learning algorithm that builds an ensemble of multiple decision trees on random bootstrap samples (Bagging principle).\n\nWorking Mechanism:\n1. Bootstrapping: Random samples of records are drawn with replacement.\n2. Random Feature Selection: Subsets of attributes are evaluated at each node split.\n3. Aggregation: Each tree generates a prediction; final outcome is derived via majority voting (classification) or averaging (regression).",
+    "procedure": [
+      "Step 1: Load dataset (e.g. historical city temperature data or credit risk dataset).",
+      "Step 2: Preprocess missing values, encode categorical variables, and split dataset.",
+      "Step 3: Import `RandomForestClassifier` from `sklearn.ensemble`.",
+      "Step 4: Initialize model: `rf = RandomForestClassifier(n_estimators=100, random_state=42)`.",
+      "Step 5: Train model on training data (`rf.fit(X_train, y_train)`).",
+      "Step 6: Make predictions on test dataset.",
+      "Step 7: Evaluate accuracy, confusion matrix, and extract `rf.feature_importances_`."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which principle forms the foundation of Random Forest ensemble algorithm?",
+          "options": ["Bagging (Bootstrap Aggregation)", "Gradient Boosting", "Principal Component Analysis", "K-Means Centroid Splitting"],
+          "answer": "Bagging (Bootstrap Aggregation)"
+        }
+      ],
+      "defaultCode": "from sklearn.ensemble import RandomForestClassifier\nimport numpy as np\n\n# Weather features: [Month, PrevMaxTemp, PrevMinTemp, Humidity]\nX = np.array([[6, 32, 24, 70], [6, 34, 25, 75], [12, 18, 10, 40], [12, 20, 11, 45]])\ny = np.array(['Hot', 'Hot', 'Cold', 'Cold'])\n\nrf = RandomForestClassifier(n_estimators=10, random_state=0)\nrf.fit(X, y)\n\ntest_sample = np.array([[6, 33, 24, 72]])\nprint(f'Predicted Weather Category for {test_sample}: {rf.predict(test_sample)[0]}')"
+    },
+    "result": "Random Forest ensemble aggregated predictions from 10 decision trees to classify test weather samples with high accuracy.",
+    "conclusion": "Random Forest combines multiple decision trees using Bagging to eliminate overfitting, improve generalization, and deliver robust predictive performance."
+  },
+  {
+    "id": "kmeans-clustering",
+    "title": "Experiment No 9: K-Means clustering using python",
+    "subject": "ML",
+    "subjectFull": "Machine Learning LAB (AIL501)",
+    "aim": "To implement K-Means clustering using sci-kit learn library.",
+    "objectives": [
+      "To understand the working of the K-Means clustering algorithm for unsupervised learning.",
+      "To implement K-Means clustering using the Scikit-learn library on a suitable dataset.",
+      "To analyze the results by visualizing the clusters and understanding the concept of centroids and inertia."
+    ],
+    "outcomes": [
+      "Students will be able to apply K-Means clustering to group similar data points without labeled data.",
+      "Students will learn to use Scikit-learn functions to implement clustering on real-world datasets.",
+      "Students will gain experience in choosing the optimal number of clusters (K) using methods like the elbow method.",
+      "Students will be able to visualize and interpret clusters and evaluate the clustering quality using metrics like inertia or silhouette score."
+    ],
+    "tools": "Anaconda, Python 3.7, Jupyter Notebook",
+    "theory": "K-Means Clustering is an unsupervised learning algorithm that is used to solve the clustering problems in machine learning or data science. K-Means Clustering groups the unlabeled dataset into different clusters. Here K defines the number of pre-defined clusters that need to be created in the process.\n\nIt is an iterative algorithm that divides the unlabeled dataset into k different clusters in such a way that each dataset belongs only one group that has similar properties. It is a centroid-based algorithm, where each cluster is associated with a centroid. The main aim of this algorithm is to minimize the sum of distances between the data point and their corresponding clusters.\n\nThe k-means clustering algorithm mainly performs two tasks:\n• Determines the best value for K center points or centroids by an iterative process.\n• Assigns each data point to its closest k-center. Those data points which are near to the particular k-center, create a cluster.\n\nElbow Method:\nThe performance of the K-means clustering algorithm depends upon highly efficient clusters that it forms. There are different ways to find the optimal number of clusters, elbow method is one of them.\n\nThe Elbow method is one of the most popular ways to find the optimal number of clusters. This method uses the concept of WCSS value. WCSS stands for Within Cluster Sum of Squares, which defines the total variations within a cluster.",
+    "procedure": [
+      "Step 1: Select the number K to decide the number of clusters.",
+      "Step 2: Select random K points or centroids (it can be other from the input dataset).",
+      "Step 3: Assign each data point to their closest centroid, which will form the predefined K clusters.",
+      "Step 4: Calculate the variance and place a new centroid of each cluster.",
+      "Step 5: Repeat step 3, which means reassign each datapoint to the new closest centroid of each cluster.",
+      "Step 6: If any reassignment occurs, then go to step-4 else go to FINISH (convergence reached).",
+      "Step 7: Find optimal K using the Elbow Method: execute K-Means for K = 1 to 10, calculate WCSS for each K, plot the WCSS curve, and pick the elbow bend point."
+    ],
+    "assignment": {
+      "task": "The dataset contains the records of different countries and includes different numbers related to child mortality, exports, health, imports, income, etc. Let the United Nations want to design development plan for the different groups of countries. The groups to be formed based on the economic wellbeing of a country. Write a program in python to train a model using K-Means clustering to group the countries based on the dataset available.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What does WCSS stand for in the context of the Elbow Method for K-Means?",
+          "options": [
+            "Within Cluster Sum of Squares",
+            "Weighted Centroid Sum of Standards",
+            "Weight Correlation Squared Score",
+            "Width-Constrained Spatial Separation"
+          ],
+          "answer": "Within Cluster Sum of Squares"
+        },
+        {
+          "id": 2,
+          "question": "How are new centroid positions recalculated in each iteration of K-Means?",
+          "options": [
+            "By computing the mean (average position) of all data points currently assigned to that cluster",
+            "By selecting the point farthest away from all other points",
+            "By computing the derivative of the sigmoid loss function",
+            "By choosing random coordinates at every iteration"
+          ],
+          "answer": "By computing the mean (average position) of all data points currently assigned to that cluster"
+        }
+      ],
+      "defaultCode": "import numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.cluster import KMeans\nfrom sklearn.preprocessing import StandardScaler\n\n# Sample UN Country Economic Wellbeing metrics: [Child Mortality, Net Income, Exports (%)]\n# Countries data (simulated UN indicators)\nX_countries = np.array([\n    [80.2, 1200, 20.5],   # Underdeveloped\n    [92.5, 950, 15.2],    # Underdeveloped\n    [65.0, 2400, 28.0],   # Developing\n    [45.3, 5600, 34.0],   # Developing\n    [32.0, 9200, 42.5],   # Developing\n    [8.5, 38000, 55.0],   # Developed\n    [5.2, 45000, 62.0],   # Developed\n    [4.1, 52000, 68.0]    # Developed\n])\n\n# Step 1: Standardize features\nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(X_countries)\n\n# Step 2: Fit K-Means with optimal K=3 (Underdeveloped, Developing, Developed)\nkmeans = KMeans(n_clusters=3, random_state=42, n_init=10)\nkmeans.fit(X_scaled)\n\nprint('Cluster Assignments for Countries:', kmeans.labels_)\nprint('Calculated Centroids (Scaled):\\n', kmeans.cluster_centers_)\nprint('Inertia (WCSS):', round(kmeans.inertia_, 4))"
+    },
+    "result": "K-Means algorithm grouped the country development dataset into distinct economic wellbeing clusters, with the Elbow curve identifying K=3 as the optimal number of clusters.",
+    "conclusion": "The elbow methods shows that K=3 is the optimum value of K. The output image shows the three different clusters, of countries based on the data, with different colors."
+  },
+  {
+    "id": "pca-dimensionality-reduction",
+    "title": "Experiment No 10: PCA using python",
+    "subject": "ML",
+    "subjectFull": "Machine Learning LAB (AIL501)",
+    "aim": "Write a program to implement PCA for the dimensionality reduction technique using a suitable data set.",
+    "objectives": [
+      "To understand the concept and mathematical foundation of Principal Component Analysis (PCA).",
+      "To implement PCA using a suitable dataset to perform dimensionality reduction while preserving the most important features.",
+      "To visualize the data in reduced dimensions and analyze the impact of PCA on model performance or data interpretation."
+    ],
+    "outcomes": [
+      "Students will be able to apply PCA using Python libraries like Scikit-learn, NumPy, and Pandas.",
+      "Students will understand how PCA helps in reducing data dimensions by projecting data onto principal components.",
+      "Students will learn to evaluate the amount of variance retained after dimensionality reduction.",
+      "Students will be able to visualize high-dimensional data in 2D or 3D plots and observe clusters or patterns more effectively."
+    ],
+    "tools": "Anaconda, Python 3.7, Jupyter Notebook",
+    "theory": "Principal Component Analysis is an unsupervised learning algorithm that is used for the dimensionality reduction in machine learning. It is a statistical process that converts the observations of correlated features into a set of linearly uncorrelated features with the help of orthogonal transformation. These new transformed features are called the Principal Components.\n\nIt is one of the popular tools that is used for exploratory data analysis and predictive modeling. It is a technique to draw strong patterns from the given dataset by reducing the variances.\n\nPCA generally tries to find the lower-dimensional surface to project the high-dimensional data. PCA works by considering the variance of each attribute because the high attribute shows the good split between the classes, and hence it reduces the dimensionality. Some real-world applications of PCA are image processing, movie recommendation system, optimizing the power allocation in various communication channels. It is a feature extraction technique, so it contains the important variables and drops the least important variable.\n\nThe transformed new features or the output of PCA are the Principal Components. The number of these PCs is either equal to or less than the original features present in the dataset. Some properties of these principal components are given below:\n• The principal component must be the linear combination of the original features.\n• These components are orthogonal, i.e., the correlation between a pair of variables is zero.\n• The importance of each component decreases when going to 1 to n, it means the 1 PC has the most importance, and n PC will have the least importance.",
+    "procedure": [
+      "Step 1: Getting the dataset (e.g. Parkinson's disease dataset with 755 features).",
+      "Step 2: Representing data into a structure (Pandas DataFrame).",
+      "Step 3: Standardizing the data (zero mean and unit variance using StandardScaler).",
+      "Step 4: Calculating the new features Or Principal Components (computing Covariance Matrix, Eigenvalues, and Eigenvectors).",
+      "Step 5: Remove less or unimportant features from the new dataset (selecting top K components that preserve variance).",
+      "Step 6: Display data with PCAs (projecting high-dimensional coordinates into 2D/3D space)."
+    ],
+    "assignment": {
+      "task": "A medical research group is working on Parkinson's disease and want to develop an application for early detection of Parkinson's. The dataset has 755 features. Train a model to reduce the dimensionality and visualize the data.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the key mathematical property of Principal Components generated by PCA?",
+          "options": [
+            "They are orthogonal and uncorrelated linear combinations of original features ordered by variance",
+            "They increase the total number of features in the dataset",
+            "They require continuous non-linear Sigmoid functions",
+            "They are discrete categorical labels"
+          ],
+          "answer": "They are orthogonal and uncorrelated linear combinations of original features ordered by variance"
+        },
+        {
+          "id": 2,
+          "question": "Before applying PCA, why is standardizing the data (zero mean, unit variance) essential?",
+          "options": [
+            "Features with larger numerical scales would dominate the variance calculation and distort the principal components",
+            "It turns unsupervised learning into supervised learning",
+            "It eliminates all negative numbers from the dataset",
+            "It reduces the sample size of the dataset"
+          ],
+          "answer": "Features with larger numerical scales would dominate the variance calculation and distort the principal components"
+        }
+      ],
+      "defaultCode": "from sklearn.decomposition import PCA\nfrom sklearn.preprocessing import StandardScaler\nimport numpy as np\n\n# Simulated subset of Parkinson's features (10 samples, 8 acoustic features)\nnp.random.seed(42)\nX_parkinsons = np.random.rand(10, 8) * 100\n\n# Step 1: Standardize the features\nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(X_parkinsons)\n\n# Step 2: Fit PCA to reduce dimensions to 2 Principal Components\npca = PCA(n_components=2)\nX_pca = pca.fit_transform(X_scaled)\n\nprint('Original Shape:', X_parkinsons.shape)\nprint('Reduced PCA Shape:', X_pca.shape)\nprint('Explained Variance Ratio per PC:', pca.explained_variance_ratio_)\nprint(f'Total Variance Preserved: {np.sum(pca.explained_variance_ratio_):.2%}')"
+    },
+    "result": "Principal Component Analysis successfully reduced high-dimensional feature vectors into orthogonal Principal Components, preserving maximum variance for 2D visualization.",
+    "conclusion": "The principal component analysis is a widely used unsupervised learning method to perform dimensionality reduction. The data with lower dimension can be visualized and interpreted."
+  }
+]

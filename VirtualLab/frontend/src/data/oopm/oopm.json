@@ -1,0 +1,163 @@
+[
+  {
+    "id": "polymorphism",
+    "title": "Core OOP: Polymorphism & Inheritance",
+    "subject": "OOPM",
+    "subjectFull": "Object Oriented Programming Methodology",
+    "aim": "To implement runtime polymorphism and method overriding using inheritance in Java / C++.",
+    "theory": "Polymorphism allows objects of different classes to respond to the same method call in unique ways.",
+    "procedure": [
+      "Define a base class Shape with a method draw().",
+      "Create derived classes Circle, Rectangle, and Triangle.",
+      "Override draw() in each derived class.",
+      "Create objects of the derived classes.",
+      "Invoke draw() to observe polymorphism."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which keyword is used to achieve method overriding in Java?",
+          "options": ["@Override", "overload", "virtual", "extends"],
+          "answer": "@Override"
+        }
+      ]
+    },
+    "result": "Dynamic method dispatch correctly invoked the overridden draw() method.",
+    "conclusion": "Polymorphism allows flexible and reusable class interfaces."
+  },
+  {
+    "id": "8",
+    "title": "Interface",
+    "subject": "OOPM",
+    "subjectFull": "Object Oriented Programming Methodology",
+    "aim": "To understand and implement interfaces in Java.",
+    "theory": "An interface in Java is a blueprint that defines methods which implementing classes must provide.",
+    "procedure": [
+      "Create an interface named Animal.",
+      "Declare a method sound() inside the interface.",
+      "Create a class Dog that implements the Animal interface.",
+      "Implement the sound() method in the Dog class.",
+      "Create an object of Dog and call the sound() method."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which keyword is used to implement an interface in Java?",
+          "options": ["extends", "implements", "interface", "inherit"],
+          "answer": "implements"
+        }
+      ]
+    },
+    "result": "The interface was successfully implemented by the Dog class.",
+    "conclusion": "Interfaces provide abstraction and define a common contract for implementing classes."
+    },
+  {
+    "id": "9",
+    "title": "Package",
+    "subject": "OOPM",
+    "subjectFull": "Object Oriented Programming Methodology",
+    "aim": "To understand and implement packages in Java.",
+    "theory": "A package in Java is used to group related classes and interfaces.",
+    "procedure": [
+      "Create a  named mypackage.",
+      "Create a Calculator class inside the package.",
+      "Define an add() method in the Calculator class.",
+      "Import the Calculator class from the package.",
+      "Create an object and call the add() method."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which keyword is used to import a class from a package in Java?",
+          "options": ["import", "package", "include", "using"],
+          "answer": "import"
+        }
+      ]
+    },
+    "result": "The Calculator class was successfully imported from the package.",
+    "conclusion": "Packages help organize Java classes and provide better code management."
+    },
+  {
+    "id": "10",
+    "title": "Exception",
+    "subject": "OOPM",
+    "subjectFull": "Object Oriented Programming Methodology",
+    "aim": "To understand and implement exception handling in Java.",
+    "theory": "Exception handling is used to handle runtime errors and maintain the normal flow of a program.",
+    "procedure": [
+      "Write a try block containing the statements that may cause an exception.",
+      "Create an arithmetic operation that causes division by zero.",
+      "Use a catch block to handle the ArithmeticException.",
+      "Display a message after handling the exception."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which block is used to handle an exception in Java?",
+          "options": ["try", "catch", "throw", "finally"],
+          "answer": "catch"
+        }
+      ]
+    },
+    "result": "The ArithmeticException was successfully handled using the catch block.",
+    "conclusion": "Exception handling helps prevent abnormal program termination and allows errors to be handled properly."
+    },
+  {
+    "id": "11",
+    "title": "Multithreading",
+    "subject": "OOPM",
+    "subjectFull": "Object Oriented Programming Methodology",
+    "aim": "To understand and implement multithreading in Java.",
+    "theory": "Multithreading allows multiple threads to execute concurrently within a program.",
+    "procedure": [
+      "Create a class that extends the Thread class.",
+      "Override the run() method.",
+      "Create an object of the thread class.",
+      "Call the start() method to begin thread execution.",
+      "Observe the execution of the thread."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which method is used to start a thread in Java?",
+          "options": ["run()", "start()", "execute()", "begin()"],
+          "answer": "start()"
+        }
+      ]
+    },
+    "result": "The thread was successfully created and started.",
+    "conclusion": "Multithreading allows multiple tasks to execute concurrently and improves program efficiency."
+    },
+  {
+    "id": "12",
+    "title": "File Handling",
+    "subject": "OOPM",
+    "subjectFull": "Object Oriented Programming Methodology",
+    "aim": "To understand and implement file handling in Java.",
+    "theory": "File handling in Java is used to create, read, write, and manage files using classes such as File, FileWriter, and FileReader.",
+    "procedure": [
+      "Create a file using Java file handling classes.",
+      "Open the file for writing.",
+      "Write data into the file.",
+      "Close the file.",
+      "Observe the file operation result."
+    ],
+    "assignment": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which class is commonly used to write data to a file in Java?",
+          "options": ["FileWriter", "FileReader", "Scanner", "Thread"],
+          "answer": "FileWriter"
+        }
+      ]
+    },
+    "result": "Data was successfully written to the file.",
+    "conclusion": "File handling allows Java programs to store and manage data using files."
+  }
+]
